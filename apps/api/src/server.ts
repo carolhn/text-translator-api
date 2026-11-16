@@ -1,7 +1,6 @@
 import { createApp } from './app';
+import { env } from './config/env';
 
-const port = Number(process.env.PORT ?? 3333);
-
-createApp().listen(port, () => {
-  console.log(`Api run in http://localhost:${port}`);
+createApp().listen(env.PORT, () => {
+  console.log(`Api run in http://localhost:${env.PORT}`);
 });
