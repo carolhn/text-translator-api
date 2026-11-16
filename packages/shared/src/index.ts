@@ -8,3 +8,8 @@ export interface TranslateResponse {
   translatedText: string;
   detectedSourceLang: string;
 }
+
+export interface ApiError {
+  code: string;
+  message: string;
+}
