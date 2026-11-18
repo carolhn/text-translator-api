@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { createAppError } from '../errors/app-error';
 import { translateSchema } from '../schemas/translate';
-import { translateWithDeepL } from '../services/deepl';
+import { translateWithDeepL } from '../services/translation';
 
 export const translateRouter = Router();
 

@@ -9,7 +9,7 @@ export function errorHandler(err: unknown, _req: Request, res: Response, _next: 
     return;
   }
 
-  if (err instanceof SyntaxError) {
+  if (isBodyParseError(err)) {
     const body: ApiError = { code: 'INVALID_JSON', message: 'Request body is not valid JSON' };
     res.status(400).json(body);
     return;
@@ -22,4 +22,8 @@ export function errorHandler(err: unknown, _req: Request, res: Response, _next: 
 
 export function notFoundHandler(req: Request, _res: Response) {
   throw createAppError(404, 'NOT_FOUND', `Route ${req.method} ${req.path} not found`);
+}
+
+function isBodyParseError(err: unknown) {
+  return err instanceof SyntaxError && 'type' in err && err.type === 'entity.parse.failed';
 }
