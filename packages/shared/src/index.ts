@@ -13,3 +13,13 @@ export interface ApiError {
   code: string;
   message: string;
 }
+
+export interface Language {
+  code: string;
+  name: string;
+}
+
+export interface LanguagesResponse {
+  source: Language[];
+  target: Language[];
+}
