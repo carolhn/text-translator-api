@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getLanguages } from '../services/deepl';
+import { getLanguages } from '../services/languages';
 
 export const languagesRouter = Router();
 
