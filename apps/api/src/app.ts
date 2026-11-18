@@ -1,5 +1,6 @@
 import express from 'express';
 import { errorHandler, notFoundHandler } from './errors/error-handler';
+import { translateRouter } from './routes/translate';
 
 export function createApp() {
   const app = express();
@@ -9,6 +10,8 @@ export function createApp() {
   app.get('/test', (_req, res) => {
     res.json({ status: 'ok' });
   });
+
+  app.use('/translate', translateRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
