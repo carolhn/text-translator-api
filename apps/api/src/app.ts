@@ -2,6 +2,7 @@ import express from 'express';
 import { errorHandler, notFoundHandler } from './errors/error-handler';
 import { languagesRouter } from './routes/languages';
 import { translateRouter } from './routes/translate';
+import { usageRouter } from './routes/usage';
 
 export function createApp() {
   const app = express();
@@ -14,6 +15,7 @@ export function createApp() {
 
   app.use('/translate', translateRouter);
   app.use('/languages', languagesRouter);
+  app.use('/usage', usageRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
