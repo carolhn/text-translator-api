@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUsage } from '../providers/deepl';
+import { getUsage } from '../services/usage';
 
 export const usageRouter = Router();
 
