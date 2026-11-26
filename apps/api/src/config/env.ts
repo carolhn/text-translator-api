@@ -7,6 +7,8 @@ const envSchema = z.object({
   MAX_TEXT_LENGTH: z.coerce.number().int().positive().default(1500),
   RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(60_000),
   RATE_LIMIT_MAX: z.coerce.number().int().positive().default(20),
+  TRANSLATION_CACHE_TTL_MS: z.coerce.number().int().positive().default(3_600_000),
+  TRANSLATION_CACHE_MAX_ENTRIES: z.coerce.number().int().positive().default(500),
 });
 
 const result = envSchema.safeParse(process.env);
