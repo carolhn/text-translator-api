@@ -1,5 +1,6 @@
 import express from 'express';
 import { errorHandler, notFoundHandler } from './errors/error-handler';
+import { translateRateLimit } from './middlewares/rate-limit';
 import { languagesRouter } from './routes/languages';
 import { translateRouter } from './routes/translate';
 import { usageRouter } from './routes/usage';
@@ -13,7 +14,7 @@ export function createApp() {
     res.json({ status: 'ok' });
   });
 
-  app.use('/translate', translateRouter);
+  app.use('/translate', translateRateLimit, translateRouter);
   app.use('/languages', languagesRouter);
   app.use('/usage', usageRouter);
 
