@@ -10,6 +10,11 @@ export interface DeepLLanguage {
   name: string;
 }
 
+export interface DeepLUsageResponse {
+  character_count: number;
+  character_limit: number;
+}
+
 async function deeplRequest<T>(path: string, init: RequestInit = {}): Promise<T> {
   let response: Response;
 
@@ -67,4 +72,8 @@ export function translateText(
 
 export function getLanguages(type: 'source' | 'target'): Promise<DeepLLanguage[]> {
   return deeplRequest<DeepLLanguage[]>(`/v2/languages?type=${type}`);
+}
+
+export function getUsage(): Promise<DeepLUsageResponse> {
+  return deeplRequest<DeepLUsageResponse>('/v2/usage');
 }
