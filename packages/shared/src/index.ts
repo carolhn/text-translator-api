@@ -23,3 +23,9 @@ export interface LanguagesResponse {
   source: Language[];
   target: Language[];
 }
+
+export interface UsageResponse {
+  usedCharacters: number;
+  limitCharacters: number;
+  remainingCharacters: number;
+}
